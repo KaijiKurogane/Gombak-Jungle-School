@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions";
+import NavBar from './NavBar';
+import RegisterParticipant from './RegisterParticipant';
+import ImageUpload from './ImageUpload';
+// import AboutUs from './AboutUs';
+
 class Home extends Component {
   handleLogout = () => {
     const { dispatch } = this.props;
@@ -10,9 +15,19 @@ class Home extends Component {
     const { isLoggingOut, logoutError } = this.props;
     return (
       <div>
-        <h1>This is your app's protected area.</h1>
-        <p>Any routes here will also be protected</p>
-        <button onClick={this.handleLogout}>Logout</button>
+        <NavBar/>
+        <br/>
+        <RegisterParticipant/>
+        <br/>
+        {/* <AboutUs/> */}
+        <br/>
+        <ImageUpload/>
+        <br/>
+        {/* <Participant/> */}
+        <br/>
+        <div className='container'>
+          <button onClick={this.handleLogout}>Logout</button>
+        </div>
         {isLoggingOut && <p>Logging Out....</p>}
         {logoutError && <p>Error logging out</p>}
       </div>
